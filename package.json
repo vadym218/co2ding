@@ -4,25 +4,12 @@
   "description": "backend",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vadym218/co2ding.git"
+    "start": "node index"
   },
   "author": "Vadym Repetskyi <vadym838@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vadym218/co2ding/issues"
-  },
-  "homepage": "https://github.com/vadym218/co2ding#readme",
   "dependencies": {
     "csv-parser": "^3.0.0",
     "dotenv": "^10.0.0",
     "ioredis": "^4.27.9"
-  },
-  "engines": {
-    "node": "16.4"
   }
 }
