@@ -3,9 +3,9 @@ require('dotenv').config();
 const Redis = require('ioredis');
 let redis = new Redis(process.env.REDIS_URL);
 
-const   regions = [],
-        dataTypes = [],
-        values = [];
+let regions = [],
+    dataTypes = [],
+    values = [];
 
 function pushType(header) {
     let [name, units] = header.split(',');
