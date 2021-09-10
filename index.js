@@ -1,5 +1,5 @@
 const http = require('http');
-require('dotenv').config();
+/*require('dotenv').config();
 const Redis = require('ioredis');
 let redis = new Redis(process.env.REDIS_URL);
 
@@ -20,13 +20,13 @@ redis.get('initialized').then(function (initialized) {
                 console.log('Redis has been initialized');
             });
     }
-});
+});*/
 
 const HOSTNAME = '127.0.0.1';
 const PORT = process.env.PORT || 80;
 
 const server = http.createServer((req, res) => {
-    if (req.method === 'GET') {
+    /*if (req.method === 'GET') {
         switch (req.url) {
             case '/distribution/regions':
                 res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -43,8 +43,8 @@ const server = http.createServer((req, res) => {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
                 res.end('okk');
         }
-    } else {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
+    } else */{
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('okkk');
     }
 });
