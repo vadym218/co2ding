@@ -35,7 +35,7 @@ function pushValues(data) {
 }
 
 redis.get('initialized').then(function (initialized) {
-    if (initialized) {
+    if (!initialized) {
         redis.flushall();
         const csv = require('csv-parser')
         const fs = require('fs');
