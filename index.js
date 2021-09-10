@@ -18,7 +18,7 @@ function pushType(header) {
 }
 
 function pushRegion(value) {
-    if(regions.findIndex((sub) => sub.name === value) === -1) regions.push({
+    if(regions.findIndex((sub) => sub.name === value) === -1 && value) regions.push({
         id: regions.length,
         name: value
     });
@@ -35,7 +35,7 @@ function pushValues(data) {
 }
 
 redis.get('initialized').then(function (initialized) {
-    if (initialized) {
+    if (!initialized) {
         redis.flushall();
         const csv = require('csv-parser')
         const fs = require('fs');
@@ -57,10 +57,18 @@ redis.get('initialized').then(function (initialized) {
                 //index++;
             })
             .on('end', () => {
+                redis.set('regions', JSON.stringify(regions));
+                redis.set('dataTypes', JSON.stringify(dataTypes));
                 redis.set('initialized', true);
                 console.log('Redis has been initialized');
-                console.log(values);
             });
+    } else {
+        redis.get('regions', function(value) {
+            regions = value;
+        });
+        redis.get('dataTypes', function(value) {
+            dataTypes = value;
+        });
     }
 });
 
@@ -72,7 +80,7 @@ const server = http.createServer((req, res) => {
         switch (req.url) {
             case '/distribution/regions':
                 res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ message: 'OK' }));
+                res.end(JSON.stringify(regions));
                 break;
 
             case '/distribution/dataTypes':
@@ -81,6 +89,8 @@ const server = http.createServer((req, res) => {
                 break;
 
             case '/distribution/summary':
+                res.writeHead(200, { 'Content-Type': 'text/plain' });
+                res.end(':(');
                 break;
 
             default:
