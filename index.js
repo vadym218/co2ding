@@ -64,10 +64,10 @@ redis.get('initialized').then(function (initialized) {
             });
     } else {
         redis.get('regions').then(function(value) {
-            regions = value;
+            regions = JSON.parse(value);
         });
         redis.get('dataTypes').then(function(value) {
-            dataTypes = value;
+            dataTypes = JSON.parse(value);
         });
     }
 });
