@@ -23,7 +23,7 @@ redis.get('initialized').then(function (initialized) {
 });
 
 const HOSTNAME = '127.0.0.1';
-const PORT = process.env.PORT||80;
+const PORT = process.env.PORT || 80;
 
 const server = http.createServer((req, res) => {
     if (req.method === 'GET') {
@@ -40,12 +40,12 @@ const server = http.createServer((req, res) => {
                 break;
 
             default:
-                res.writeHead(404, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ message: 'Invalid route' }));
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.end('okk');
         }
     } else {
-        res.writeHead(404, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ message: 'Invalid route' }));
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.end('okkk');
     }
 });
 
