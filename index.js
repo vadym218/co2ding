@@ -23,7 +23,7 @@ redis.get('initialized').then(function (initialized) {
 });
 
 const HOSTNAME = '127.0.0.1';
-const PORT = process.end.PORT||80;
+const PORT = process.env.PORT||80;
 
 const server = http.createServer((req, res) => {
     if (req.method === 'GET') {
