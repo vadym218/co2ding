@@ -63,10 +63,10 @@ redis.get('initialized').then(function (initialized) {
                 console.log('Redis has been initialized');
             });
     } else {
-        redis.get('regions', function(value) {
+        redis.get('regions').then(function(value) {
             regions = value;
         });
-        redis.get('dataTypes', function(value) {
+        redis.get('dataTypes').then(function(value) {
             dataTypes = value;
         });
     }
