@@ -22,8 +22,8 @@ redis.get('initialized').then(function (initialized) {
     }
 });
 
-const hostname = '127.0.0.1';
-const port = 80;
+const HOSTNAME = '127.0.0.1';
+const PORT = process.end.PORT||80;
 
 const server = http.createServer((req, res) => {
     if (req.method === 'GET') {
@@ -49,6 +49,6 @@ const server = http.createServer((req, res) => {
     }
 });
 
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(PORT, HOSTNAME, () => {
+    console.log(`Server running at http://${HOSTNAME}:${PORT}/`);
 });
